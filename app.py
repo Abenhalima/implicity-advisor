@@ -642,7 +642,7 @@ with tab2:
                     st.markdown(assistant_message)
                     st.session_state.messages.append({"role": "assistant", "content": assistant_message})
                 except Exception as e:
-                    st.error(f"Erreur lors de la génération de la réponse. Veuillez réessayer.")
+                    st.error(f"Erreur: {str(e)}")
 
     # Quick questions
     st.divider()
