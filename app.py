@@ -6,7 +6,7 @@ import os
 st.set_page_config(
     page_title="Implicity Mission Advisor",
     page_icon="🫀",
-    layout="centered"
+    layout="wide"
 )
 
 # Initialize Anthropic client
@@ -200,70 +200,299 @@ En tant que Tribe Lead, flexibilité pour s'engager rapidement sur une mission s
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Header
-st.title("🫀 Implicity Mission Advisor")
-st.markdown("""
-Assistant pour explorer la candidature d'**Abdessamad Benhalima** au poste d'**interim Head of Product** chez Implicity.
+# ============================================
+# MAIN LAYOUT WITH OVERVIEW + CHAT
+# ============================================
 
-*Posez vos questions sur son profil, ses convictions, ou son approche pour cette mission.*
-""")
+st.title("🫀 Abdessamad Benhalima × Implicity")
+st.markdown("**Candidature pour le poste d'interim Head of Product**")
 
 st.divider()
 
-# Display chat history
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
+# Create tabs for different sections
+tab1, tab2, tab3, tab4 = st.tabs(["📋 Vue d'ensemble", "💬 Questions", "📅 Plan d'action", "👤 Profil détaillé"])
 
-# Chat input
-if prompt := st.chat_input("Votre question..."):
-    # Add user message
-    st.session_state.messages.append({"role": "user", "content": prompt})
-    with st.chat_message("user"):
-        st.markdown(prompt)
+# ============================================
+# TAB 1: OVERVIEW
+# ============================================
+with tab1:
+    st.header("Ma compréhension de vos enjeux")
 
-    # Generate response
-    with st.chat_message("assistant"):
-        with st.spinner("Réflexion..."):
-            response = client.messages.create(
-                model="claude-sonnet-4-20250514",
-                max_tokens=1024,
-                system=SYSTEM_PROMPT,
-                messages=[
-                    {"role": m["role"], "content": m["content"]}
-                    for m in st.session_state.messages
-                ]
-            )
-            assistant_message = response.content[0].text
-            st.markdown(assistant_message)
+    col1, col2 = st.columns(2)
 
-    # Add assistant message to history
-    st.session_state.messages.append({"role": "assistant", "content": assistant_message})
+    with col1:
+        st.markdown("""
+        **Enjeux de surface :**
+        - Maintenir la vélocité produit pendant la transition
+        - Assurer la continuité opérationnelle de l'équipe
 
-# Sidebar with suggested questions
-with st.sidebar:
-    st.header("Questions suggérées")
+        **Enjeux sous-jacents :**
+        - Structurer une équipe produit qui scale avec l'entreprise
+        - Naviguer les contraintes FDA/MDR tout en restant agile
+        - Aligner des stakeholders multiples (médecins, patients, fabricants, régulateurs)
+        """)
 
-    questions = [
-        "Quel est le parcours d'Abdessamad ?",
-        "Quelles sont ses convictions pour Implicity ?",
-        "Comment compte-t-il gérer la transition ?",
-        "Quelle expérience a-t-il en environnement réglementé ?",
-        "Comment gère-t-il la relation avec le CODIR ?",
-        "Quel serait son plan pour les premières semaines ?",
-    ]
-
-    for q in questions:
-        if st.button(q, key=q, use_container_width=True):
-            st.session_state.messages.append({"role": "user", "content": q})
-            st.rerun()
+    with col2:
+        st.markdown("""
+        **Ce que j'apporte :**
+        - ✅ Expérience de structuration d'équipes (8-18 personnes)
+        - ✅ Navigation réglementaire (Directive Omnibus EU, RGPD)
+        - ✅ Capacité à "Manage UP" tout en protégeant les équipes
+        - ✅ Posture d'interim assumée : créer de la valeur et préparer la suite
+        """)
 
     st.divider()
+
+    st.header("Mes convictions pour Implicity")
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.markdown("""
+        **🏛️ Le réglementaire comme avantage**
+
+        FDA/MDR ne sont pas des freins. Une équipe mature transforme ces contraintes en avantage compétitif via des process rigoureux et une approche risk-based.
+        """)
+
+        st.markdown("""
+        **📊 Data comme fondation**
+
+        Dans la télésurveillance cardiaque, la donnée EST le produit. Culture data-driven essentielle.
+        """)
+
+    with col2:
+        st.markdown("""
+        **⚙️ Product Ops = accélérateur**
+
+        Avec 1 Product Ops déjà en place, opportunité de structurer pour que l'équipe puisse doubler sans perdre en efficacité.
+        """)
+
+        st.markdown("""
+        **🔄 Transition = transformation**
+
+        Un interim n'est pas là pour maintenir le statu quo. C'est une fenêtre pour questionner et améliorer.
+        """)
+
+    with col3:
+        st.markdown("""
+        **🤝 Alignement par la vision**
+
+        Médecins, patients, fabricants, régulateurs : construire une vision produit où chaque partie prenante trouve sa place.
+        """)
+
+        st.markdown("""
+        **⚡ Excellence opérationnelle + stratégie**
+
+        Capable de débloquer l'opérationnel tout en gardant la hauteur sur le "où va-t-on dans 18 mois ?".
+        """)
+
+    st.divider()
+
+    st.header("Pourquoi moi ?")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.markdown("""
+        **🎯 Manage UP + protéger les équipes**
+
+        Chez Sephora : stabilisé le delivery, gagné la confiance du CODIR, tout en rendant les équipes plus sereines. Ce n'est pas "soit l'un soit l'autre".
+
+        **📜 Expérience réglementaire**
+
+        - Directive Omnibus EU (Sephora) - coordination juridique/tech/UX
+        - Data platform 2M transactions/jour (McDonald's)
+        - Services financiers réglementés (CA, AXA, BNP)
+        """)
+
+    with col2:
+        st.markdown("""
+        **👥 Track record structuration équipes**
+
+        - 18 consultants chez Thiga (Tribe Lead)
+        - 8 Product People chez Decathlon
+        - 3 PMs chez Sephora Europe
+
+        **🤖 Écosystème AI/Data**
+
+        Core Team AI de Thiga avec CEO + 2 partners. Certifications ML (Stanford) et AI Agents (Hugging Face).
+        """)
+
+# ============================================
+# TAB 2: CHAT
+# ============================================
+with tab2:
+    st.header("Posez vos questions")
+    st.markdown("*L'assistant répond sur la base de mon profil vérifié - pas d'invention.*")
+
+    # Display chat history
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+
+    # Chat input
+    if prompt := st.chat_input("Votre question sur mon profil ou mon approche..."):
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        with st.chat_message("user"):
+            st.markdown(prompt)
+
+        with st.chat_message("assistant"):
+            with st.spinner("Réflexion..."):
+                try:
+                    response = client.messages.create(
+                        model="claude-sonnet-4-20250514",
+                        max_tokens=1024,
+                        system=SYSTEM_PROMPT,
+                        messages=[
+                            {"role": m["role"], "content": m["content"]}
+                            for m in st.session_state.messages
+                        ]
+                    )
+                    assistant_message = response.content[0].text
+                    st.markdown(assistant_message)
+                    st.session_state.messages.append({"role": "assistant", "content": assistant_message})
+                except Exception as e:
+                    st.error(f"Erreur lors de la génération de la réponse. Veuillez réessayer.")
+
+    # Quick questions
+    st.divider()
+    st.markdown("**Questions fréquentes :**")
+
+    questions = [
+        "Comment gères-tu la relation avec le CODIR ?",
+        "Quelle expérience en environnement réglementé ?",
+        "Comment structurerais-tu l'équipe produit ?",
+        "Quelle serait ta priorité la première semaine ?",
+    ]
+
+    cols = st.columns(2)
+    for i, q in enumerate(questions):
+        with cols[i % 2]:
+            if st.button(q, key=f"q_{i}", use_container_width=True):
+                st.session_state.messages.append({"role": "user", "content": q})
+                st.rerun()
 
     if st.button("🗑️ Effacer la conversation", use_container_width=True):
         st.session_state.messages = []
         st.rerun()
 
+# ============================================
+# TAB 3: ACTION PLAN
+# ============================================
+with tab3:
+    st.header("Plan d'action proposé")
+    st.markdown("*Approche offensive : je prends des sujets dès la semaine 1*")
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.subheader("📅 Semaine 1-2")
+        st.markdown("**Immersion & Quick Wins**")
+        st.markdown("""
+        - Rencontres 1:1 avec chaque membre de l'équipe produit
+        - Shadow sessions avec les PMs sur leurs sujets
+        - Identification de 2-3 quick wins opérationnels
+        - **Prise en main d'un sujet concret** pour démontrer par l'exemple
+        """)
+
+    with col2:
+        st.subheader("📅 Semaine 3-4")
+        st.markdown("**Diagnostic & Structuration**")
+        st.markdown("""
+        - Audit des process produit (discovery, delivery, documentation)
+        - Mapping des stakeholders et attentes
+        - Proposition d'améliorations avec l'équipe
+        - Début de formalisation de la vision produit
+        """)
+
+    with col3:
+        st.subheader("📅 Mois 2-3")
+        st.markdown("**Transformation & Ancrage**")
+        st.markdown("""
+        - Mise en place des améliorations validées
+        - Coaching individuel des PMs et Designers
+        - Construction de la roadmap moyen-terme
+        - Préparation passation au Head of Product permanent
+        """)
+
     st.divider()
-    st.caption("Agent créé pour la mission Implicity")
-    st.caption("Février 2026")
+
+    st.subheader("📦 Livrables clés")
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown("""
+        - ✅ Process documentés et opérationnels
+        - ✅ Équipe autonome et structurée
+        """)
+    with col2:
+        st.markdown("""
+        - ✅ Vision produit formalisée
+        - ✅ Recommandations pour le recrutement permanent
+        """)
+
+# ============================================
+# TAB 4: DETAILED PROFILE
+# ============================================
+with tab4:
+    st.header("Profil détaillé")
+
+    st.subheader("Poste actuel")
+    st.markdown("""
+    **Tribe Lead Data & AI Products chez Thiga** (Paris)
+    - Direction d'une équipe de 18 consultants (PMs et Product Designers)
+    - Croissance revenue de 1.2M€ à 2.1M€ (+75% YoY)
+    - Gestion P&L, forecasting, recrutement
+    - Membre de la Core Team AI avec le CEO et 2 partners
+    """)
+
+    st.subheader("Expériences clés")
+
+    with st.expander("🛍️ Sephora (2023-2024) - Product Lead Europe"):
+        st.markdown("""
+        - Management de 3 Product Managers sur les produits e-commerce européens
+        - Ownership de l'expérience Discovery (Home, Search, Product Pages)
+        - **Manage UP** : Stabilisé le delivery, gagné la confiance du CODIR tout en rendant les équipes plus "sereines"
+        - **Compliance Directive Omnibus** : Coordination juridique, technique et UX pour assurer la conformité sur les pratiques de promotions
+        """)
+
+    with st.expander("🏃 Decathlon (2022) - Product Lead"):
+        st.markdown("""
+        - Management de 8 Product People
+        - Structuration des pratiques produit
+        """)
+
+    with st.expander("🍔 McDonald's France (2020) - Consultant Data Platform"):
+        st.markdown("""
+        - Définition des premiers use cases pour un Datalake (jusqu'à 2M transactions/jour)
+        - Conception architecture V1, identification compétences, roadmap
+        """)
+
+    with st.expander("⚡ Vertuoz by ENGIE (2017-2018) - Product Strategist"):
+        st.markdown("""
+        - Refonte plateforme B2B SaaS de monitoring de performance énergétique
+        - Environnement réglementé, données sensibles
+        - Réduction du time-to-value de 1 semaine à immédiat
+        """)
+
+    with st.expander("🏦 Wavestone (2012-2017) - Consultant"):
+        st.markdown("""
+        Services financiers réglementés :
+        - Crédit Agricole, AXA, BNP Paribas
+
+        Grands groupes en transformation :
+        - L'Oréal, SNCF, Engie, La Poste
+        """)
+
+    st.subheader("Formation")
+    st.markdown("""
+    - 🎓 M.Eng. Télécommunications & Systèmes Sans Fil - ISEP Paris
+    - 🤖 Machine Learning Specialization - DeepLearning.AI & Stanford (2024)
+    - 🤖 AI Agents Fundamentals - Hugging Face (2025)
+    """)
+
+# ============================================
+# FOOTER
+# ============================================
+st.divider()
+st.caption("Agent créé par Abdessamad Benhalima pour la mission Implicity • Février 2026")
