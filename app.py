@@ -28,6 +28,19 @@ st.markdown("""
         --thiga-gray: #848182;
     }
 
+    /* Force light theme */
+    .stApp {
+        background-color: #ffffff !important;
+    }
+
+    .stApp > header {
+        background-color: #ffffff !important;
+    }
+
+    section[data-testid="stSidebar"] {
+        background-color: #f8f9fa !important;
+    }
+
     /* Global font */
     html, body, [class*="css"] {
         font-family: 'Kanit', sans-serif;
