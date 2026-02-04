@@ -450,8 +450,25 @@ if "messages" not in st.session_state:
 # MAIN LAYOUT WITH OVERVIEW + CHAT
 # ============================================
 
-st.title("🫀 Abdessamad Benhalima × Implicity")
-st.markdown("**Candidature pour le poste d'interim Head of Product**")
+# Header with photo
+col_photo, col_title = st.columns([1, 4])
+
+with col_photo:
+    st.markdown("""
+    <div style="text-align: center;">
+        <img src="https://media.licdn.com/dms/image/v2/D4E03AQFbdiBCN6uZAw/profile-displayphoto-crop_800_800/B4EZnNRJt.HEAI-/0/1760085452086?e=1772064000&v=beta&t=AvnHExiCQXA0jsah6AbpLJXqJErF2pg_mCunV2QABKA"
+             style="width: 120px; height: 120px; border-radius: 50%; border: 4px solid #00D8A2; object-fit: cover;">
+    </div>
+    """, unsafe_allow_html=True)
+
+with col_title:
+    st.title("Abdessamad Benhalima × Implicity")
+    st.markdown("""
+    <p style="font-size: 1.2em; margin-top: -10px;">
+        <strong>Candidature pour le poste d'interim Head of Product</strong><br>
+        <span style="color: #848182;">Tribe Lead Data & AI Products @ Thiga</span>
+    </p>
+    """, unsafe_allow_html=True)
 
 st.divider()
 
