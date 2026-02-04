@@ -69,13 +69,14 @@ st.markdown("""
 
     /* Cards styling */
     .conviction-card {
-        background: linear-gradient(135deg, #ffffff 0%, var(--thiga-light-purple) 100%);
+        background: #ffffff;
         border-radius: 16px;
         padding: 24px;
         margin: 10px 0;
         border-left: 4px solid var(--thiga-primary);
         box-shadow: 0 4px 15px rgba(88, 24, 255, 0.1);
         transition: transform 0.2s ease, box-shadow 0.2s ease;
+        color: #1B0442;
     }
 
     .conviction-card:hover {
@@ -84,9 +85,13 @@ st.markdown("""
     }
 
     .conviction-card h4 {
-        color: var(--thiga-violet);
+        color: var(--thiga-violet) !important;
         margin-bottom: 12px;
         font-weight: 600;
+    }
+
+    .conviction-card p, .conviction-card li {
+        color: #1B0442 !important;
     }
 
     /* Highlight boxes */
@@ -105,30 +110,44 @@ st.markdown("""
 
     /* Why me cards */
     .why-card {
-        background: white;
+        background: #ffffff;
         border-radius: 12px;
         padding: 20px;
         margin: 10px 0;
         border: 2px solid var(--thiga-light-purple);
         box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        color: #1B0442;
     }
 
     .why-card:hover {
         border-color: var(--thiga-primary);
     }
 
+    .why-card h4 {
+        color: var(--thiga-violet) !important;
+    }
+
+    .why-card p, .why-card li {
+        color: #1B0442 !important;
+    }
+
     /* Timeline styling */
     .timeline-card {
-        background: white;
+        background: #ffffff;
         border-radius: 16px;
         padding: 24px;
         margin: 10px 0;
         border-top: 4px solid var(--thiga-violet);
         box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        color: #1B0442;
     }
 
     .timeline-card h3 {
         color: var(--thiga-violet) !important;
+    }
+
+    .timeline-card p, .timeline-card li {
+        color: #1B0442 !important;
     }
 
     /* Buttons */
