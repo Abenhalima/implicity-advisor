@@ -9,6 +9,204 @@ st.set_page_config(
     layout="wide"
 )
 
+# ============================================
+# THIGA BRAND STYLING
+# ============================================
+st.markdown("""
+<style>
+    /* Import Kanit font */
+    @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
+
+    /* Thiga Colors */
+    :root {
+        --thiga-primary: #00D8A2;
+        --thiga-violet: #5818FF;
+        --thiga-plum: #1B0442;
+        --thiga-magenta: #C50041;
+        --thiga-light-purple: #E6DEFA;
+        --thiga-dark: #0E0E0E;
+        --thiga-gray: #848182;
+    }
+
+    /* Global font */
+    html, body, [class*="css"] {
+        font-family: 'Kanit', sans-serif;
+    }
+
+    /* Main title styling */
+    h1 {
+        font-family: 'Kanit', sans-serif !important;
+        font-weight: 600 !important;
+        color: var(--thiga-plum) !important;
+    }
+
+    /* Headers */
+    h2, h3 {
+        font-family: 'Kanit', sans-serif !important;
+        color: var(--thiga-plum) !important;
+    }
+
+    /* Tab styling */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 8px;
+        background-color: var(--thiga-light-purple);
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .stTabs [data-baseweb="tab"] {
+        font-family: 'Kanit', sans-serif;
+        font-weight: 500;
+        color: var(--thiga-plum);
+        border-radius: 8px;
+        padding: 10px 20px;
+    }
+
+    .stTabs [aria-selected="true"] {
+        background-color: var(--thiga-primary) !important;
+        color: white !important;
+    }
+
+    /* Cards styling */
+    .conviction-card {
+        background: linear-gradient(135deg, #ffffff 0%, var(--thiga-light-purple) 100%);
+        border-radius: 16px;
+        padding: 24px;
+        margin: 10px 0;
+        border-left: 4px solid var(--thiga-primary);
+        box-shadow: 0 4px 15px rgba(88, 24, 255, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .conviction-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(88, 24, 255, 0.15);
+    }
+
+    .conviction-card h4 {
+        color: var(--thiga-violet);
+        margin-bottom: 12px;
+        font-weight: 600;
+    }
+
+    /* Highlight boxes */
+    .highlight-box {
+        background: linear-gradient(135deg, var(--thiga-primary) 0%, #00b88a 100%);
+        color: white;
+        border-radius: 12px;
+        padding: 20px;
+        margin: 10px 0;
+    }
+
+    .highlight-box h4 {
+        color: white !important;
+        margin-bottom: 10px;
+    }
+
+    /* Why me cards */
+    .why-card {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        margin: 10px 0;
+        border: 2px solid var(--thiga-light-purple);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .why-card:hover {
+        border-color: var(--thiga-primary);
+    }
+
+    /* Timeline styling */
+    .timeline-card {
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        margin: 10px 0;
+        border-top: 4px solid var(--thiga-violet);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .timeline-card h3 {
+        color: var(--thiga-violet) !important;
+    }
+
+    /* Buttons */
+    .stButton > button {
+        font-family: 'Kanit', sans-serif;
+        background: linear-gradient(135deg, var(--thiga-primary) 0%, #00b88a 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+
+    .stButton > button:hover {
+        background: linear-gradient(135deg, #00b88a 0%, var(--thiga-primary) 100%);
+        box-shadow: 0 4px 12px rgba(0, 216, 162, 0.4);
+    }
+
+    /* Expanders */
+    .streamlit-expanderHeader {
+        font-family: 'Kanit', sans-serif;
+        font-weight: 500;
+        background-color: var(--thiga-light-purple);
+        border-radius: 8px;
+    }
+
+    /* Chat input */
+    .stChatInput > div {
+        border-color: var(--thiga-primary) !important;
+        border-radius: 12px;
+    }
+
+    /* Dividers */
+    hr {
+        border-color: var(--thiga-light-purple);
+    }
+
+    /* Footer */
+    .footer {
+        text-align: center;
+        color: var(--thiga-gray);
+        padding: 20px;
+        font-size: 14px;
+    }
+
+    /* Metrics styling */
+    .metric-card {
+        background: var(--thiga-plum);
+        color: white;
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .metric-card .number {
+        font-size: 2.5em;
+        font-weight: 700;
+        color: var(--thiga-primary);
+    }
+
+    /* Badge styling */
+    .badge {
+        display: inline-block;
+        background: var(--thiga-primary);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 500;
+        margin: 2px;
+    }
+
+    .badge-violet {
+        background: var(--thiga-violet);
+    }
+</style>
+""", unsafe_allow_html=True)
+
 # Initialize Anthropic client
 client = Anthropic(api_key=st.secrets.get("ANTHROPIC_API_KEY", os.getenv("ANTHROPIC_API_KEY")))
 
@@ -222,24 +420,33 @@ with tab1:
 
     with col1:
         st.markdown("""
-        **Enjeux de surface :**
-        - Maintenir la vélocité produit pendant la transition
-        - Assurer la continuité opérationnelle de l'équipe
-
-        **Enjeux sous-jacents :**
-        - Structurer une équipe produit qui scale avec l'entreprise
-        - Naviguer les contraintes FDA/MDR tout en restant agile
-        - Aligner des stakeholders multiples (médecins, patients, fabricants, régulateurs)
-        """)
+        <div class="conviction-card">
+            <h4>🔍 Enjeux de surface</h4>
+            <ul>
+                <li>Maintenir la vélocité produit pendant la transition</li>
+                <li>Assurer la continuité opérationnelle de l'équipe</li>
+            </ul>
+            <h4>🎯 Enjeux sous-jacents</h4>
+            <ul>
+                <li>Structurer une équipe produit qui scale avec l'entreprise</li>
+                <li>Naviguer les contraintes FDA/MDR tout en restant agile</li>
+                <li>Aligner des stakeholders multiples (médecins, patients, fabricants, régulateurs)</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
 
     with col2:
         st.markdown("""
-        **Ce que j'apporte :**
-        - ✅ Expérience de structuration d'équipes (8-18 personnes)
-        - ✅ Navigation réglementaire (Directive Omnibus EU, RGPD)
-        - ✅ Capacité à "Manage UP" tout en protégeant les équipes
-        - ✅ Posture d'interim assumée : créer de la valeur et préparer la suite
-        """)
+        <div class="highlight-box">
+            <h4>✨ Ce que j'apporte</h4>
+            <ul>
+                <li>✅ Expérience de structuration d'équipes (8-18 personnes)</li>
+                <li>✅ Navigation réglementaire (Directive Omnibus EU, RGPD)</li>
+                <li>✅ Capacité à "Manage UP" tout en protégeant les équipes</li>
+                <li>✅ Posture d'interim assumée : créer de la valeur et préparer la suite</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
 
     st.divider()
 
@@ -249,42 +456,48 @@ with tab1:
 
     with col1:
         st.markdown("""
-        **🏛️ Le réglementaire comme avantage**
-
-        FDA/MDR ne sont pas des freins. Une équipe mature transforme ces contraintes en avantage compétitif via des process rigoureux et une approche risk-based.
-        """)
+        <div class="conviction-card">
+            <h4>🏛️ Le réglementaire comme avantage</h4>
+            <p>FDA/MDR ne sont pas des freins. Une équipe mature transforme ces contraintes en avantage compétitif via des process rigoureux et une approche risk-based.</p>
+        </div>
+        """, unsafe_allow_html=True)
 
         st.markdown("""
-        **📊 Data comme fondation**
-
-        Dans la télésurveillance cardiaque, la donnée EST le produit. Culture data-driven essentielle.
-        """)
+        <div class="conviction-card">
+            <h4>📊 Data comme fondation</h4>
+            <p>Dans la télésurveillance cardiaque, la donnée EST le produit. Culture data-driven essentielle.</p>
+        </div>
+        """, unsafe_allow_html=True)
 
     with col2:
         st.markdown("""
-        **⚙️ Product Ops = accélérateur**
-
-        Avec 1 Product Ops déjà en place, opportunité de structurer pour que l'équipe puisse doubler sans perdre en efficacité.
-        """)
+        <div class="conviction-card">
+            <h4>⚙️ Product Ops = accélérateur</h4>
+            <p>Avec 1 Product Ops déjà en place, opportunité de structurer pour que l'équipe puisse doubler sans perdre en efficacité.</p>
+        </div>
+        """, unsafe_allow_html=True)
 
         st.markdown("""
-        **🔄 Transition = transformation**
-
-        Un interim n'est pas là pour maintenir le statu quo. C'est une fenêtre pour questionner et améliorer.
-        """)
+        <div class="conviction-card">
+            <h4>🔄 Transition = transformation</h4>
+            <p>Un interim n'est pas là pour maintenir le statu quo. C'est une fenêtre pour questionner et améliorer.</p>
+        </div>
+        """, unsafe_allow_html=True)
 
     with col3:
         st.markdown("""
-        **🤝 Alignement par la vision**
-
-        Médecins, patients, fabricants, régulateurs : construire une vision produit où chaque partie prenante trouve sa place.
-        """)
+        <div class="conviction-card">
+            <h4>🤝 Alignement par la vision</h4>
+            <p>Médecins, patients, fabricants, régulateurs : construire une vision produit où chaque partie prenante trouve sa place.</p>
+        </div>
+        """, unsafe_allow_html=True)
 
         st.markdown("""
-        **⚡ Excellence opérationnelle + stratégie**
-
-        Capable de débloquer l'opérationnel tout en gardant la hauteur sur le "où va-t-on dans 18 mois ?".
-        """)
+        <div class="conviction-card">
+            <h4>⚡ Excellence opérationnelle + stratégie</h4>
+            <p>Capable de débloquer l'opérationnel tout en gardant la hauteur sur le "où va-t-on dans 18 mois ?".</p>
+        </div>
+        """, unsafe_allow_html=True)
 
     st.divider()
 
@@ -294,29 +507,46 @@ with tab1:
 
     with col1:
         st.markdown("""
-        **🎯 Manage UP + protéger les équipes**
+        <div class="why-card">
+            <h4>🎯 Manage UP + protéger les équipes</h4>
+            <p>Chez Sephora : stabilisé le delivery, gagné la confiance du CODIR, tout en rendant les équipes plus sereines. Ce n'est pas "soit l'un soit l'autre".</p>
+        </div>
+        """, unsafe_allow_html=True)
 
-        Chez Sephora : stabilisé le delivery, gagné la confiance du CODIR, tout en rendant les équipes plus sereines. Ce n'est pas "soit l'un soit l'autre".
-
-        **📜 Expérience réglementaire**
-
-        - Directive Omnibus EU (Sephora) - coordination juridique/tech/UX
-        - Data platform 2M transactions/jour (McDonald's)
-        - Services financiers réglementés (CA, AXA, BNP)
-        """)
+        st.markdown("""
+        <div class="why-card">
+            <h4>📜 Expérience réglementaire</h4>
+            <ul>
+                <li>Directive Omnibus EU (Sephora) - coordination juridique/tech/UX</li>
+                <li>Data platform 2M transactions/jour (McDonald's)</li>
+                <li>Services financiers réglementés (CA, AXA, BNP)</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
 
     with col2:
         st.markdown("""
-        **👥 Track record structuration équipes**
+        <div class="why-card">
+            <h4>👥 Track record structuration équipes</h4>
+            <p>
+                <span class="badge">18 consultants - Thiga</span>
+                <span class="badge badge-violet">8 Product People - Decathlon</span>
+                <span class="badge">3 PMs - Sephora Europe</span>
+            </p>
+            <p style="margin-top: 10px;">Pas juste du management, mais de la structuration : process, rituels, montée en compétence.</p>
+        </div>
+        """, unsafe_allow_html=True)
 
-        - 18 consultants chez Thiga (Tribe Lead)
-        - 8 Product People chez Decathlon
-        - 3 PMs chez Sephora Europe
-
-        **🤖 Écosystème AI/Data**
-
-        Core Team AI de Thiga avec CEO + 2 partners. Certifications ML (Stanford) et AI Agents (Hugging Face).
-        """)
+        st.markdown("""
+        <div class="why-card">
+            <h4>🤖 Écosystème AI/Data</h4>
+            <p>Core Team AI de Thiga avec CEO + 2 partners.</p>
+            <p>
+                <span class="badge badge-violet">ML - Stanford</span>
+                <span class="badge">AI Agents - Hugging Face</span>
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
 
 # ============================================
 # TAB 2: CHAT
@@ -386,50 +616,60 @@ with tab3:
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.subheader("📅 Semaine 1-2")
-        st.markdown("**Immersion & Quick Wins**")
         st.markdown("""
-        - Rencontres 1:1 avec chaque membre de l'équipe produit
-        - Shadow sessions avec les PMs sur leurs sujets
-        - Identification de 2-3 quick wins opérationnels
-        - **Prise en main d'un sujet concret** pour démontrer par l'exemple
-        """)
+        <div class="timeline-card">
+            <h3>📅 Semaine 1-2</h3>
+            <p><strong>Immersion & Quick Wins</strong></p>
+            <ul>
+                <li>Rencontres 1:1 avec chaque membre de l'équipe produit</li>
+                <li>Shadow sessions avec les PMs sur leurs sujets</li>
+                <li>Identification de 2-3 quick wins opérationnels</li>
+                <li><strong>Prise en main d'un sujet concret</strong> pour démontrer par l'exemple</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
 
     with col2:
-        st.subheader("📅 Semaine 3-4")
-        st.markdown("**Diagnostic & Structuration**")
         st.markdown("""
-        - Audit des process produit (discovery, delivery, documentation)
-        - Mapping des stakeholders et attentes
-        - Proposition d'améliorations avec l'équipe
-        - Début de formalisation de la vision produit
-        """)
+        <div class="timeline-card">
+            <h3>📅 Semaine 3-4</h3>
+            <p><strong>Diagnostic & Structuration</strong></p>
+            <ul>
+                <li>Audit des process produit (discovery, delivery, documentation)</li>
+                <li>Mapping des stakeholders et attentes</li>
+                <li>Proposition d'améliorations avec l'équipe</li>
+                <li>Début de formalisation de la vision produit</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
 
     with col3:
-        st.subheader("📅 Mois 2-3")
-        st.markdown("**Transformation & Ancrage**")
         st.markdown("""
-        - Mise en place des améliorations validées
-        - Coaching individuel des PMs et Designers
-        - Construction de la roadmap moyen-terme
-        - Préparation passation au Head of Product permanent
-        """)
+        <div class="timeline-card">
+            <h3>📅 Mois 2-3</h3>
+            <p><strong>Transformation & Ancrage</strong></p>
+            <ul>
+                <li>Mise en place des améliorations validées</li>
+                <li>Coaching individuel des PMs et Designers</li>
+                <li>Construction de la roadmap moyen-terme</li>
+                <li>Préparation passation au Head of Product permanent</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
 
     st.divider()
 
-    st.subheader("📦 Livrables clés")
-
-    col1, col2 = st.columns(2)
-    with col1:
-        st.markdown("""
-        - ✅ Process documentés et opérationnels
-        - ✅ Équipe autonome et structurée
-        """)
-    with col2:
-        st.markdown("""
-        - ✅ Vision produit formalisée
-        - ✅ Recommandations pour le recrutement permanent
-        """)
+    st.markdown("""
+    <div class="highlight-box">
+        <h4>📦 Livrables clés</h4>
+        <p>
+            <span class="badge">Process documentés</span>
+            <span class="badge">Équipe autonome</span>
+            <span class="badge">Vision produit formalisée</span>
+            <span class="badge">Recommandations recrutement</span>
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
 # ============================================
 # TAB 4: DETAILED PROFILE
