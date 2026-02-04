@@ -41,9 +41,25 @@ st.markdown("""
         background-color: #f8f9fa !important;
     }
 
-    /* Global font */
+    /* Global font and text color */
     html, body, [class*="css"] {
         font-family: 'Kanit', sans-serif;
+        color: #1B0442 !important;
+    }
+
+    /* Force all text dark */
+    p, li, span, div, label {
+        color: #1B0442 !important;
+    }
+
+    /* Markdown text */
+    .stMarkdown, .stMarkdown p, .stMarkdown li {
+        color: #1B0442 !important;
+    }
+
+    /* Expander content */
+    .streamlit-expanderContent p, .streamlit-expanderContent li {
+        color: #1B0442 !important;
     }
 
     /* Main title styling */
