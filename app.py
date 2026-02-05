@@ -348,22 +348,32 @@ with tab1:
     # ==========================================
     st.header("Ma compréhension de vos enjeux")
 
-    # Use HTML grid for better alignment
-    enjeux_cards = ""
-    for enjeu in ENJEUX_DATA["enjeux"]:
-        points_html = "".join([f"<li>{p}</li>" for p in enjeu["points"]])
-        enjeux_cards += f"""
-        <div class="grid-card conviction-card">
-            <h4>{enjeu["icon"]} {enjeu["title"]}</h4>
-            <ul>{points_html}</ul>
-        </div>
-        """
+    # Use Streamlit columns for layout
+    enjeux = ENJEUX_DATA["enjeux"]
 
-    st.markdown(f"""
-    <div class="grid-3col">
-        {enjeux_cards}
-    </div>
-    """, unsafe_allow_html=True)
+    # Row 1: first 3 enjeux
+    col1, col2, col3 = st.columns(3)
+    for col, enjeu in zip([col1, col2, col3], enjeux[:3]):
+        with col:
+            points_html = "".join([f"<li>{p}</li>" for p in enjeu["points"]])
+            st.markdown(f"""
+            <div class="conviction-card">
+                <h4>{enjeu["icon"]} {enjeu["title"]}</h4>
+                <ul>{points_html}</ul>
+            </div>
+            """, unsafe_allow_html=True)
+
+    # Row 2: remaining enjeux
+    col1, col2, col3 = st.columns(3)
+    for col, enjeu in zip([col1, col2], enjeux[3:]):
+        with col:
+            points_html = "".join([f"<li>{p}</li>" for p in enjeu["points"]])
+            st.markdown(f"""
+            <div class="conviction-card">
+                <h4>{enjeu["icon"]} {enjeu["title"]}</h4>
+                <ul>{points_html}</ul>
+            </div>
+            """, unsafe_allow_html=True)
 
     st.divider()
 
@@ -372,20 +382,29 @@ with tab1:
     # ==========================================
     st.header("Mes convictions pour Implicity")
 
-    convictions_cards = ""
-    for conviction in CONVICTIONS_DATA["convictions"]:
-        convictions_cards += f"""
-        <div class="grid-card conviction-card">
-            <h4>{conviction["icon"]} {conviction["title"]}</h4>
-            <p>{conviction["description"]}</p>
-        </div>
-        """
+    convictions = CONVICTIONS_DATA["convictions"]
 
-    st.markdown(f"""
-    <div class="grid-2col">
-        {convictions_cards}
-    </div>
-    """, unsafe_allow_html=True)
+    # Row 1
+    col1, col2 = st.columns(2)
+    for col, conviction in zip([col1, col2], convictions[:2]):
+        with col:
+            st.markdown(f"""
+            <div class="conviction-card">
+                <h4>{conviction["icon"]} {conviction["title"]}</h4>
+                <p>{conviction["description"]}</p>
+            </div>
+            """, unsafe_allow_html=True)
+
+    # Row 2
+    col1, col2 = st.columns(2)
+    for col, conviction in zip([col1, col2], convictions[2:4]):
+        with col:
+            st.markdown(f"""
+            <div class="conviction-card">
+                <h4>{conviction["icon"]} {conviction["title"]}</h4>
+                <p>{conviction["description"]}</p>
+            </div>
+            """, unsafe_allow_html=True)
 
     st.divider()
 
@@ -394,41 +413,42 @@ with tab1:
     # ==========================================
     st.header("Pourquoi moi ?")
 
-    # Ce que j'apporte (liste)
+    # Ce que j'apporte (highlight box)
     apports_html = "".join([f"<li>✅ {a}</li>" for a in POURQUOI_MOI_DATA["ce_que_japporte"]])
-
-    # Preuves (cards)
-    preuves_cards = ""
-    for preuve in POURQUOI_MOI_DATA["preuves"]:
-        content_html = ""
-        if "content" in preuve:
-            content_html += f"<p>{preuve['content']}</p>"
-        if "points" in preuve:
-            points = "".join([f"<li>{p}</li>" for p in preuve["points"]])
-            content_html += f"<ul>{points}</ul>"
-        if "badges" in preuve:
-            badges = "".join([
-                f'<span class="badge{" badge-violet" if b.get("style") == "violet" else ""}">{b["text"]}</span>'
-                for b in preuve["badges"]
-            ])
-            content_html += f"<p>{badges}</p>"
-
-        preuves_cards += f"""
-        <div class="grid-card why-card">
-            <h4>{preuve["icon"]} {preuve["title"]}</h4>
-            {content_html}
-        </div>
-        """
-
     st.markdown(f"""
-    <div class="highlight-box" style="margin-bottom: 20px;">
+    <div class="highlight-box">
         <h4>✨ Ce que j'apporte</h4>
         <ul>{apports_html}</ul>
     </div>
-    <div class="grid-3col">
-        {preuves_cards}
-    </div>
     """, unsafe_allow_html=True)
+
+    st.write("")  # Spacer
+
+    # Preuves (3 cards)
+    preuves = POURQUOI_MOI_DATA["preuves"]
+    col1, col2, col3 = st.columns(3)
+
+    for col, preuve in zip([col1, col2, col3], preuves):
+        with col:
+            content_html = ""
+            if "content" in preuve:
+                content_html += f"<p>{preuve['content']}</p>"
+            if "points" in preuve:
+                points = "".join([f"<li>{p}</li>" for p in preuve["points"]])
+                content_html += f"<ul>{points}</ul>"
+            if "badges" in preuve:
+                badges = "".join([
+                    f'<span class="badge{" badge-violet" if b.get("style") == "violet" else ""}">{b["text"]}</span>'
+                    for b in preuve["badges"]
+                ])
+                content_html += f"<p>{badges}</p>"
+
+            st.markdown(f"""
+            <div class="why-card">
+                <h4>{preuve["icon"]} {preuve["title"]}</h4>
+                {content_html}
+            </div>
+            """, unsafe_allow_html=True)
 
 # ============================================
 # TAB 2: CHAT
