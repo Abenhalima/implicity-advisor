@@ -177,18 +177,22 @@ st.markdown("""
         color: #1B0442 !important;
     }
 
-    /* Highlight boxes */
+    /* Highlight boxes - Thiga style: plum background with white text */
     .highlight-box {
-        background: linear-gradient(135deg, var(--thiga-primary) 0%, #00b88a 100%);
+        background: var(--thiga-plum);
         color: white;
         border-radius: 12px;
-        padding: 20px;
+        padding: 24px;
         margin: 10px 0;
     }
 
     .highlight-box h4 {
         color: white !important;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
+    }
+
+    .highlight-box li {
+        color: white !important;
     }
 
     /* Why me cards */
@@ -444,10 +448,10 @@ with tab1:
     st.header("Pourquoi moi ?")
 
     # Ce que j'apporte (highlight box)
-    apports_html = "".join([f"<li>✅ {a}</li>" for a in POURQUOI_MOI_DATA["ce_que_japporte"]])
+    apports_html = "".join([f"<li>{a}</li>" for a in POURQUOI_MOI_DATA["ce_que_japporte"]])
     st.markdown(f"""
     <div class="highlight-box">
-        <h4>✨ Ce que j'apporte</h4>
+        <h4>Ce que j'apporte</h4>
         <ul>{apports_html}</ul>
     </div>
     """, unsafe_allow_html=True)
