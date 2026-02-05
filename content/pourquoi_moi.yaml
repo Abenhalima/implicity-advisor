@@ -1,18 +1,16 @@
-# Pourquoi moi - Arguments différenciants
+# Pourquoi moi - Bloc unique fusionnant "Ce que j'apporte" et les preuves
 # Modifie ce fichier pour mettre à jour la section "Pourquoi moi" du site
 
-arguments:
-  - icon: "🎯"
-    title: "Manage UP + protéger les équipes"
-    content: "Chez Sephora : stabilisé le delivery, gagné la confiance du CODIR, tout en rendant les équipes plus sereines. Ce n'est pas \"soit l'un soit l'autre\"."
+# Ce que j'apporte (soft skills / posture)
+ce_que_japporte:
+  - "Montée très rapide sur contexte nouveau et complexe — plein de secteurs, types de boîtes et maturités vus"
+  - "Capacité à travailler avec des COMEX / C-Level — sparring partner crédible pour Arnaud"
+  - "Structuration pragmatique des pratiques — ce qui marche en grand groupe ≠ healthtech de 50 personnes"
+  - "Connaissance des enjeux data/IA — impact sur discovery et delivery"
+  - "Posture interim assumée — créer de la valeur et préparer la suite, pas \"rester à tout prix\""
 
-  - icon: "📜"
-    title: "Expérience réglementaire"
-    points:
-      - "Directive Omnibus EU (Sephora) - coordination juridique/tech/UX"
-      - "Data platform 2M transactions/jour (McDonald's)"
-      - "Services financiers réglementés (CA, AXA, BNP)"
-
+# Preuves concrètes (track record)
+preuves:
   - icon: "👥"
     title: "Track record structuration équipes"
     badges:
@@ -23,6 +21,13 @@ arguments:
       - text: "3 PMs - Sephora Europe"
         style: "default"
     content: "Pas juste du management, mais de la structuration : process, rituels, montée en compétence."
+
+  - icon: "📜"
+    title: "Expérience réglementaire"
+    points:
+      - "Directive Omnibus EU (Sephora) — coordination juridique/tech/UX"
+      - "Data platform 2M transactions/jour (McDonald's)"
+      - "Services financiers réglementés (CA, AXA, BNP)"
 
   - icon: "🤖"
     title: "Écosystème AI/Data"

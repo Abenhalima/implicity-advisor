@@ -277,6 +277,34 @@ st.markdown("""
     .badge-violet {
         background: var(--thiga-violet);
     }
+
+    /* Grid layouts for aligned cards */
+    .grid-3col {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin: 10px 0;
+    }
+
+    .grid-2col {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin: 10px 0;
+    }
+
+    .grid-card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Responsive: stack on mobile */
+    @media (max-width: 768px) {
+        .grid-3col, .grid-2col {
+            grid-template-columns: 1fr;
+        }
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -315,79 +343,92 @@ tab1, tab2, tab3, tab4 = st.tabs(["📋 Vue d'ensemble", "💬 Questions", "📅
 # TAB 1: OVERVIEW
 # ============================================
 with tab1:
+    # ==========================================
+    # SECTION 1: ENJEUX (grille 3x2)
+    # ==========================================
     st.header("Ma compréhension de vos enjeux")
 
-    # Enjeux - dynamically generated from YAML
-    col1, col2, col3 = st.columns(3)
-    columns = [col1, col2, col3]
-
-    for i, enjeu in enumerate(ENJEUX_DATA["enjeux"]):
-        with columns[i % 3]:
-            points_html = "".join([f"<li>{p}</li>" for p in enjeu["points"]])
-            st.markdown(f"""
-            <div class="conviction-card">
-                <h4>{enjeu["icon"]} {enjeu["title"]}</h4>
-                <ul>{points_html}</ul>
-            </div>
-            """, unsafe_allow_html=True)
-
-    # Ce que j'apporte - in the last column
-    with col3:
-        apports_html = "".join([f"<li>✅ {a}</li>" for a in ENJEUX_DATA["ce_que_japporte"]])
-        st.markdown(f"""
-        <div class="highlight-box">
-            <h4>✨ Ce que j'apporte</h4>
-            <ul>{apports_html}</ul>
+    # Use HTML grid for better alignment
+    enjeux_cards = ""
+    for enjeu in ENJEUX_DATA["enjeux"]:
+        points_html = "".join([f"<li>{p}</li>" for p in enjeu["points"]])
+        enjeux_cards += f"""
+        <div class="grid-card conviction-card">
+            <h4>{enjeu["icon"]} {enjeu["title"]}</h4>
+            <ul>{points_html}</ul>
         </div>
-        """, unsafe_allow_html=True)
+        """
+
+    st.markdown(f"""
+    <div class="grid-3col">
+        {enjeux_cards}
+    </div>
+    """, unsafe_allow_html=True)
 
     st.divider()
 
+    # ==========================================
+    # SECTION 2: CONVICTIONS (grille 2x2)
+    # ==========================================
     st.header("Mes convictions pour Implicity")
 
-    # Convictions - dynamically generated from YAML (2 columns for 4 items)
-    col1, col2 = st.columns(2)
-    columns = [col1, col2]
+    convictions_cards = ""
+    for conviction in CONVICTIONS_DATA["convictions"]:
+        convictions_cards += f"""
+        <div class="grid-card conviction-card">
+            <h4>{conviction["icon"]} {conviction["title"]}</h4>
+            <p>{conviction["description"]}</p>
+        </div>
+        """
 
-    for i, conviction in enumerate(CONVICTIONS_DATA["convictions"]):
-        with columns[i % 2]:
-            st.markdown(f"""
-            <div class="conviction-card">
-                <h4>{conviction["icon"]} {conviction["title"]}</h4>
-                <p>{conviction["description"]}</p>
-            </div>
-            """, unsafe_allow_html=True)
+    st.markdown(f"""
+    <div class="grid-2col">
+        {convictions_cards}
+    </div>
+    """, unsafe_allow_html=True)
 
     st.divider()
 
+    # ==========================================
+    # SECTION 3: POURQUOI MOI (bloc unique)
+    # ==========================================
     st.header("Pourquoi moi ?")
 
-    # Pourquoi moi - dynamically generated from YAML
-    col1, col2 = st.columns(2)
-    columns = [col1, col2]
+    # Ce que j'apporte (liste)
+    apports_html = "".join([f"<li>✅ {a}</li>" for a in POURQUOI_MOI_DATA["ce_que_japporte"]])
 
-    for i, arg in enumerate(POURQUOI_MOI_DATA["arguments"]):
-        with columns[i % 2]:
-            # Build content based on what's in the YAML
-            content_html = ""
-            if "content" in arg:
-                content_html += f"<p>{arg['content']}</p>"
-            if "points" in arg:
-                points = "".join([f"<li>{p}</li>" for p in arg["points"]])
-                content_html += f"<ul>{points}</ul>"
-            if "badges" in arg:
-                badges = "".join([
-                    f'<span class="badge{" badge-violet" if b.get("style") == "violet" else ""}">{b["text"]}</span>'
-                    for b in arg["badges"]
-                ])
-                content_html += f"<p>{badges}</p>"
+    # Preuves (cards)
+    preuves_cards = ""
+    for preuve in POURQUOI_MOI_DATA["preuves"]:
+        content_html = ""
+        if "content" in preuve:
+            content_html += f"<p>{preuve['content']}</p>"
+        if "points" in preuve:
+            points = "".join([f"<li>{p}</li>" for p in preuve["points"]])
+            content_html += f"<ul>{points}</ul>"
+        if "badges" in preuve:
+            badges = "".join([
+                f'<span class="badge{" badge-violet" if b.get("style") == "violet" else ""}">{b["text"]}</span>'
+                for b in preuve["badges"]
+            ])
+            content_html += f"<p>{badges}</p>"
 
-            st.markdown(f"""
-            <div class="why-card">
-                <h4>{arg["icon"]} {arg["title"]}</h4>
-                {content_html}
-            </div>
-            """, unsafe_allow_html=True)
+        preuves_cards += f"""
+        <div class="grid-card why-card">
+            <h4>{preuve["icon"]} {preuve["title"]}</h4>
+            {content_html}
+        </div>
+        """
+
+    st.markdown(f"""
+    <div class="highlight-box" style="margin-bottom: 20px;">
+        <h4>✨ Ce que j'apporte</h4>
+        <ul>{apports_html}</ul>
+    </div>
+    <div class="grid-3col">
+        {preuves_cards}
+    </div>
+    """, unsafe_allow_html=True)
 
 # ============================================
 # TAB 2: CHAT
