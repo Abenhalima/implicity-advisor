@@ -131,6 +131,35 @@ st.markdown("""
         box-shadow: 0 4px 15px rgba(88, 24, 255, 0.1);
         transition: transform 0.2s ease, box-shadow 0.2s ease;
         color: #1B0442;
+        min-height: 200px;
+    }
+
+    /* Enjeux cards - taller to fit bullet points */
+    .enjeu-card {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 24px;
+        margin: 10px 0;
+        border-left: 4px solid var(--thiga-primary);
+        box-shadow: 0 4px 15px rgba(88, 24, 255, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        color: #1B0442;
+        min-height: 220px;
+    }
+
+    .enjeu-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(88, 24, 255, 0.15);
+    }
+
+    .enjeu-card h4 {
+        color: var(--thiga-violet) !important;
+        margin-bottom: 12px;
+        font-weight: 600;
+    }
+
+    .enjeu-card p, .enjeu-card li {
+        color: #1B0442 !important;
     }
 
     .conviction-card:hover {
@@ -171,6 +200,7 @@ st.markdown("""
         border: 2px solid var(--thiga-light-purple);
         box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         color: #1B0442;
+        min-height: 200px;
     }
 
     .why-card:hover {
@@ -357,7 +387,7 @@ with tab1:
         with col:
             points_html = "".join([f"<li>{p}</li>" for p in enjeu["points"]])
             st.markdown(f"""
-            <div class="conviction-card">
+            <div class="enjeu-card">
                 <h4>{enjeu["icon"]} {enjeu["title"]}</h4>
                 <ul>{points_html}</ul>
             </div>
@@ -369,7 +399,7 @@ with tab1:
         with col:
             points_html = "".join([f"<li>{p}</li>" for p in enjeu["points"]])
             st.markdown(f"""
-            <div class="conviction-card">
+            <div class="enjeu-card">
                 <h4>{enjeu["icon"]} {enjeu["title"]}</h4>
                 <ul>{points_html}</ul>
             </div>
