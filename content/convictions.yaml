@@ -1,0 +1,19 @@
+# Convictions pour la mission Implicity
+# Modifie ce fichier pour mettre à jour la section "Convictions" du site
+
+convictions:
+  - icon: "👥"
+    title: "S'appuyer sur les forces de l'équipe existante"
+    description: "Identifier ce qui fonctionne, les forces et axes de progression de chacun. Créer un espace de partage et d'apprentissage collectif entre les 5 squads."
+
+  - icon: "🎯"
+    title: "Une vision partagée qui intègre les enjeux US dès maintenant"
+    description: "Aligner l'équipe sur des objectifs et une roadmap qui tiennent compte du développement US — pas en \"phase 2\" mais dans les arbitrages quotidiens."
+
+  - icon: "⚡"
+    title: "Des rituels légers mais structurants"
+    description: "Communication fluide avec CEO et CTO. Priorisation pragmatique sans framework usine à gaz. Le bon niveau de formalisme pour une healthtech de 50 personnes."
+
+  - icon: "🔒"
+    title: "Le réglementaire intégré en amont, pas subi en aval"
+    description: "CE/ANS/FDA ne doivent pas être des \"surprises\" qui explosent la roadmap. Les intégrer dès la discovery pour éviter les retours en arrière coûteux."

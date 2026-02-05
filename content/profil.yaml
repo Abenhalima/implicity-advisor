@@ -1,0 +1,67 @@
+# Profil détaillé
+# Modifie ce fichier pour mettre à jour la section "Profil" du site
+
+poste_actuel:
+  titre: "Tribe Lead Data & AI Products chez Thiga"
+  lieu: "Paris"
+  points:
+    - "Direction d'une équipe de 18 consultants (PMs et Product Designers)"
+    - "Croissance revenue de 1.2M€ à 2.1M€ (+75% YoY)"
+    - "Gestion P&L, forecasting, recrutement"
+    - "Membre de la Core Team AI avec le CEO et 2 partners"
+
+experiences:
+  - entreprise: "Sephora"
+    periode: "2023-2024"
+    poste: "Product Lead Europe"
+    emoji: "🛍️"
+    points:
+      - "Management de 3 Product Managers sur les produits e-commerce européens"
+      - "Ownership de l'expérience Discovery (Home, Search, Product Pages)"
+      - "**Manage UP** : Stabilisé le delivery, gagné la confiance du CODIR tout en rendant les équipes plus \"sereines\""
+      - "**Compliance Directive Omnibus** : Coordination juridique, technique et UX pour assurer la conformité sur les pratiques de promotions"
+
+  - entreprise: "Decathlon"
+    periode: "2022"
+    poste: "Product Lead"
+    emoji: "🏃"
+    points:
+      - "Management de 8 Product People"
+      - "Structuration des pratiques produit"
+
+  - entreprise: "McDonald's France"
+    periode: "2020"
+    poste: "Consultant Data Platform"
+    emoji: "🍔"
+    points:
+      - "Définition des premiers use cases pour un Datalake (jusqu'à 2M transactions/jour)"
+      - "Conception architecture V1, identification compétences, roadmap"
+
+  - entreprise: "Vertuoz by ENGIE"
+    periode: "2017-2018"
+    poste: "Product Strategist"
+    emoji: "⚡"
+    points:
+      - "Refonte plateforme B2B SaaS de monitoring de performance énergétique"
+      - "Environnement réglementé, données sensibles"
+      - "Réduction du time-to-value de 1 semaine à immédiat"
+
+  - entreprise: "Wavestone"
+    periode: "2012-2017"
+    poste: "Consultant"
+    emoji: "🏦"
+    sections:
+      - titre: "Services financiers réglementés"
+        items:
+          - "Crédit Agricole, AXA, BNP Paribas"
+      - titre: "Grands groupes en transformation"
+        items:
+          - "L'Oréal, SNCF, Engie, La Poste"
+
+formation:
+  - emoji: "🎓"
+    titre: "M.Eng. Télécommunications & Systèmes Sans Fil - ISEP Paris"
+  - emoji: "🤖"
+    titre: "Machine Learning Specialization - DeepLearning.AI & Stanford (2024)"
+  - emoji: "🤖"
+    titre: "AI Agents Fundamentals - Hugging Face (2025)"

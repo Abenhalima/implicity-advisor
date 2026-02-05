@@ -1,0 +1,35 @@
+# Plan d'action proposé
+# Modifie ce fichier pour mettre à jour la section "Plan d'action" du site
+
+intro: "Approche offensive : je prends des sujets dès la semaine 1"
+
+phases:
+  - title: "Semaine 1-2"
+    subtitle: "Immersion & Quick Wins"
+    points:
+      - "Rencontres 1:1 avec chaque membre de l'équipe produit"
+      - "Shadow sessions avec les PMs sur leurs sujets"
+      - "Identification de 2-3 quick wins opérationnels"
+      - "**Prise en main d'un sujet concret** pour démontrer par l'exemple"
+
+  - title: "Semaine 3-4"
+    subtitle: "Diagnostic & Structuration"
+    points:
+      - "Audit des process produit (discovery, delivery, documentation)"
+      - "Mapping des stakeholders et attentes"
+      - "Proposition d'améliorations avec l'équipe"
+      - "Début de formalisation de la vision produit"
+
+  - title: "Mois 2-3"
+    subtitle: "Transformation & Ancrage"
+    points:
+      - "Mise en place des améliorations validées"
+      - "Coaching individuel des PMs et Designers"
+      - "Construction de la roadmap moyen-terme"
+      - "Préparation passation au Head of Product permanent"
+
+livrables:
+  - "Process documentés"
+  - "Équipe autonome"
+  - "Vision produit formalisée"
+  - "Recommandations recrutement"

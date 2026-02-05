@@ -1,0 +1,43 @@
+# Enjeux identifiés pour la mission Implicity
+# Modifie ce fichier pour mettre à jour la section "Enjeux" du site
+
+enjeux:
+  - icon: "👥"
+    title: "Structurer et manager l'équipe produit"
+    points:
+      - "Donner un cadre clair aux 5 squads (priorités, rituels, responsabilités)"
+      - "Aider des PM déjà intermédiaires à monter en autonomie et en impact"
+      - "Assurer un management de proximité (coaching, arbitrages, support)"
+
+  - icon: "🎯"
+    title: "Prendre le relais du CEO sur le pilotage produit"
+    points:
+      - "Servir de filtre et de sparring partner à Arnaud (capable de dire non / prioriser)"
+      - "Traduire sa vision en roadmaps opérables et réalistes"
+      - "Libérer significativement son temps tout en le rassurant sur la direction"
+
+  - icon: "🔒"
+    title: "Fiabiliser la delivery dans un contexte réglementé"
+    points:
+      - "Intégrer CE / ANS / FDA et qualité dans la stratégie produit et les roadmaps"
+      - "Limiter les \"explosions\" de roadmap en anticipant les exigences exogènes"
+      - "Travailler l'interface produit–tech–qualité pour sécuriser les mises en prod"
+
+  - icon: "🌍"
+    title: "Gérer la complexité France / US"
+    points:
+      - "Arbitrer entre ROI court terme France (remboursement, ANS/CNAM) et développement long terme US"
+      - "S'assurer que les choix produit servent la stratégie business bi-pays"
+
+  - icon: "📈"
+    title: "Installer des pratiques orientées outcomes"
+    points:
+      - "Renforcer la culture \"heroïste\" / business : impact mesuré plutôt que liste de features"
+      - "Clarifier les objectifs par squad et les résultats attendus"
+
+ce_que_japporte:
+  - "Montée très rapide sur contexte nouveau et complexe"
+  - "Capacité à travailler avec des COMEX / C-Level"
+  - "Structuration pragmatique des pratiques (grand groupe ≠ healthtech)"
+  - "Connaissance des enjeux data/IA et impact sur discovery, delivery"
+  - "Posture interim assumée : créer de la valeur et préparer la suite"

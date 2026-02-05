@@ -1,0 +1,34 @@
+# Pourquoi moi - Arguments différenciants
+# Modifie ce fichier pour mettre à jour la section "Pourquoi moi" du site
+
+arguments:
+  - icon: "🎯"
+    title: "Manage UP + protéger les équipes"
+    content: "Chez Sephora : stabilisé le delivery, gagné la confiance du CODIR, tout en rendant les équipes plus sereines. Ce n'est pas \"soit l'un soit l'autre\"."
+
+  - icon: "📜"
+    title: "Expérience réglementaire"
+    points:
+      - "Directive Omnibus EU (Sephora) - coordination juridique/tech/UX"
+      - "Data platform 2M transactions/jour (McDonald's)"
+      - "Services financiers réglementés (CA, AXA, BNP)"
+
+  - icon: "👥"
+    title: "Track record structuration équipes"
+    badges:
+      - text: "18 consultants - Thiga"
+        style: "default"
+      - text: "8 Product People - Decathlon"
+        style: "violet"
+      - text: "3 PMs - Sephora Europe"
+        style: "default"
+    content: "Pas juste du management, mais de la structuration : process, rituels, montée en compétence."
+
+  - icon: "🤖"
+    title: "Écosystème AI/Data"
+    content: "Core Team AI de Thiga avec CEO + 2 partners."
+    badges:
+      - text: "ML - Stanford"
+        style: "violet"
+      - text: "AI Agents - Hugging Face"
+        style: "default"
